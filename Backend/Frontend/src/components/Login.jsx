@@ -43,7 +43,7 @@ function Login(){
     <>
     <div className="flex h-screen items-center justify-center">
       <form onSubmit={handleSubmit(onSubmit)} className="border border-white px-6 py-2 rounded-md w-96 space-y-3">
-        <h1 className="text-xl text-center">Chat <span className="text-green-500 font-semibold">App</span></h1>
+        <h1 className="text-xl text-center">Talk <span className="text-green-500 font-semibold">Tide</span></h1>
         <h2 className="text-2xl text-white font-bold">Login</h2>
         <br />
 
