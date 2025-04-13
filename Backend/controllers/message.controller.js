@@ -3,9 +3,9 @@ import Message from "../models/message.model.js"
 import { getReceiverSocketId, io } from "../SocketIO/server.js";
 export const sendMessage=async(req,res)=>{
     try {
-        const {message}=req.body;
+        const {message,url}=req.body;
         const {id:receiverId}=req.params;
-        console.log(req.user);
+        // console.log(req.user);
         const senderId=req.user._id;
         let conversation=await Conversation.findOne({members:{$all:[senderId,receiverId]}})
         if(!conversation){
@@ -17,7 +17,8 @@ export const sendMessage=async(req,res)=>{
         const newMessage=new Message({
             senderId,
             receiverId,
-            message
+            message,
+            image:url
         })
         if(newMessage){
             conversation.messages.push(newMessage._id);

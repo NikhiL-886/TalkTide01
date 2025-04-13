@@ -14,9 +14,20 @@ const messageSchema=new mongoose.Schema({
     },
     message:{
         type:String,
-        required:true,
+    },
+    image:{
+        type:String,
+        default:""
     }
 },{timestamps:true});
+
+messageSchema.pre("validate", function (next) {
+    if (!this.message && !this.image) {
+      next(new Error("Either text or image must be provided"));
+    } else {
+      next();
+    }
+  });
 
 const Message=mongoose.model("Message",messageSchema);
 export default Message;

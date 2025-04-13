@@ -12,6 +12,10 @@ const userSchema= mongoose.Schema({
     password:{
         type:String,
         required:true
+    },
+    profileURL:{
+        type:String,
+        default:"https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
     }
 },{timestamps:true})
 

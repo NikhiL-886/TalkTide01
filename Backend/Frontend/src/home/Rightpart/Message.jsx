@@ -15,7 +15,12 @@ function Message ({message}){
         <div>
             <div className="p-4">
             <div className={`chat ${chatName}`}>
-  <div className={`chat-bubble text-white ${chatColor}`}>{message.message}</div>
+  <div className={`chat-bubble text-white ${chatColor}`}>
+    {message.image!==""?
+    <img src={message.image} alt="" className="w-45 h-45 rounded-lg object-cover border-4 border-white"/>:
+    null  
+  }
+    {message.message}</div>
   <div className="chat-footer">{formattedTime}</div>
 </div>
             </div>

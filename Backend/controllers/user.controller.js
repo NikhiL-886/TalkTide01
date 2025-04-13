@@ -26,7 +26,8 @@ export const signup= async (req,res)=>{
         res.status(201).json({message:"User created Successfully",user:{
             _id:newUser._id,
             fullname:newUser.fullname,
-            email:newUser.email
+            email:newUser.email,
+            profileURL:newUser.profileURL
         }})
     }
     } catch (error) {
@@ -48,7 +49,8 @@ try {
     res.status(200).json({message:"User logged in successfully",user:{
         _id:user._id,
         fullname:user.fullname,
-        email:user.email
+        email:user.email,
+        profileURL:user.profileURL
     }});
     
 } catch (error) {
@@ -78,4 +80,19 @@ export const allUsers=async(req,res)=>{
     } catch (error) {
         console.log("Error in allUsers Controller: "+error);
     }
+}
+
+export const updateProfile=async(req,res)=>{
+    try {
+    req.user.profileURL=req.body.profileUrl;
+    await req.user.save();
+    console.log(req.user);
+    res.status(200).json({"message":"user updated successfully","user":req.user});
+    } catch (error) {
+        console.log(error);
+
+        res.status(500).json({"Error":"Interval Server Error"});
+    }
+    
+
 }

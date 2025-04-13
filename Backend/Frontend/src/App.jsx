@@ -7,6 +7,7 @@ import { useAuth } from "./context/Authprovider"
 import { Navigate, Route, Routes } from "react-router-dom"
 import Loading from "./components/Loading"
 import {Toaster} from "react-hot-toast"
+import ProfilePage from "./components/ProfilePage"
 function App(){
   const [authUser,setAuthUser]=useAuth()
   console.log(authUser);
@@ -52,6 +53,9 @@ function App(){
         ):(
         <Login/>
         )
+      }/>
+      <Route path="/profile" element={
+        <ProfilePage/>
       }/>
     </Routes>
     <Toaster/>
